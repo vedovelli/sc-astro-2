@@ -1,0 +1,19 @@
+---
+import { getPurchases } from "../api/store.api";
+import PurchasesPage from "../components/PurchasesPage";
+
+const purchases = await getPurchases();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Store - Purchases</title>
+  </head>
+  <body>
+    <PurchasesPage purchases={purchases.success ? purchases.data : []} />
+  </body>
+</html>

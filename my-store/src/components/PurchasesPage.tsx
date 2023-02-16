@@ -1,44 +1,15 @@
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
-import { CheckCircleIcon } from "@heroicons/react/20/solid";
-import type { Purchase } from "../api/store.api";
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
+import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import type { Purchase } from '../api/store.api'
 
-const orders = [
-  {
-    number: "WU88191111",
-    href: "#",
-    invoiceHref: "#",
-    createdDate: "Jul 6, 2021",
-    createdDatetime: "2021-07-06",
-    deliveredDate: "July 12, 2021",
-    deliveredDatetime: "2021-07-12",
-    total: "$160.00",
-    products: [
-      {
-        id: 1,
-        name: "Micro Backpack",
-        description:
-          "Are you a minimalist looking for a compact carry option? The Micro Backpack is the perfect size for your essential everyday carry items. Wear it like a backpack or carry it like a satchel for all-day use.",
-        href: "#",
-        price: "$70.00",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/order-history-page-03-product-01.jpg",
-        imageAlt:
-          "Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps.",
-      },
-      // More products...
-    ],
-  },
-  // More orders...
-];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+function classNames(...classes: unknown[]) {
+  return classes.filter(Boolean).join(' ')
 }
 
 interface Props {
-  purchases: Purchase[];
+  purchases: Purchase[]
 }
 
 export default function PurchasesPage({ purchases }: Props) {
@@ -67,7 +38,7 @@ export default function PurchasesPage({ purchases }: Props) {
                   className="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border"
                 >
                   <h3 className="sr-only">
-                    Order placed on{" "}
+                    Order placed on{' '}
                     <time dateTime={order.createdDatetime}>
                       {order.createdDate}
                     </time>
@@ -134,9 +105,9 @@ export default function PurchasesPage({ purchases }: Props) {
                                   href={order.href}
                                   className={classNames(
                                     active
-                                      ? "bg-gray-100 text-gray-900"
-                                      : "text-gray-700",
-                                    "block px-4 py-2 text-sm"
+                                      ? 'bg-gray-100 text-gray-900'
+                                      : 'text-gray-700',
+                                    'block px-4 py-2 text-sm',
                                   )}
                                 >
                                   View
@@ -149,9 +120,9 @@ export default function PurchasesPage({ purchases }: Props) {
                                   href={order.invoiceHref}
                                   className={classNames(
                                     active
-                                      ? "bg-gray-100 text-gray-900"
-                                      : "text-gray-700",
-                                    "block px-4 py-2 text-sm"
+                                      ? 'bg-gray-100 text-gray-900'
+                                      : 'text-gray-700',
+                                    'block px-4 py-2 text-sm',
                                   )}
                                 >
                                   Invoice
@@ -214,7 +185,7 @@ export default function PurchasesPage({ purchases }: Props) {
                               aria-hidden="true"
                             />
                             <p className="ml-2 text-sm font-medium text-gray-500">
-                              Delivered on{" "}
+                              Delivered on{' '}
                               <time dateTime={order.deliveredDatetime}>
                                 {order.deliveredDate}
                               </time>
@@ -250,5 +221,5 @@ export default function PurchasesPage({ purchases }: Props) {
         </div>
       </div>
     </div>
-  );
+  )
 }

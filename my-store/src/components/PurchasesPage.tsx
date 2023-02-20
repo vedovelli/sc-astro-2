@@ -2,17 +2,16 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
-import type { Purchase } from '../api/store.api'
+import type { UnpackData } from 'domain-functions'
+import type { getPurchasesAndUsers } from '../api/store.api'
 
 function classNames(...classes: unknown[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-interface Props {
-  purchases: Purchase[]
-}
+type Props = UnpackData<typeof getPurchasesAndUsers>
 
-export default function PurchasesPage({ purchases }: Props) {
+export default function PurchasesPage({ purchases, users }: Props) {
   return (
     <div className="bg-white">
       <div className="py-16 sm:py-24">
@@ -177,7 +176,6 @@ export default function PurchasesPage({ purchases }: Props) {
                             </p>
                           </div>
                         </div>
-
                         <div className="mt-6 sm:flex sm:justify-between">
                           <div className="flex items-center">
                             <CheckCircleIcon
@@ -211,6 +209,18 @@ export default function PurchasesPage({ purchases }: Props) {
                             </div>
                           </div>
                         </div>
+                        {order.user && (
+                          <div
+                            className="flex itemce
+                        "
+                          >
+                            <img
+                              src={order.user.avatar}
+                              alt={order.user.name}
+                            />
+                            <p>{order.user.name}</p>
+                          </div>
+                        )}
                       </li>
                     ))}
                   </ul>

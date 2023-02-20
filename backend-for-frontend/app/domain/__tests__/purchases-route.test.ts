@@ -1,4 +1,3 @@
-// import { fromSuccess } from 'domain-functions';
 import { loader } from '../../routes/purchases'
 
 describe('purchases loader', () => {

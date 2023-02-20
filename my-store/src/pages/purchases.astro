@@ -1,8 +1,8 @@
 ---
-import { getPurchases } from "../api/store.api";
+import { getPurchases, getPurchasesAndUsers, getUsers } from "../api/store.api";
 import PurchasesPage from "../components/PurchasesPage";
 
-const purchases = await getPurchases();
+const allData = await getPurchasesAndUsers({ quantity: 10 })
 ---
 
 <!DOCTYPE html>
@@ -14,6 +14,6 @@ const purchases = await getPurchases();
     <title>My Store - Purchases</title>
   </head>
   <body>
-    <PurchasesPage purchases={purchases.success ? purchases.data : []} />
+    {allData.success ? <PurchasesPage {...allData.data} /> : null}
   </body>
 </html>

@@ -9,7 +9,7 @@ export const getPurchases = makeDomainFunction(
     number: faker.datatype.number({ min: 1256, max: 4589 }),
     href: '#',
     invoiceHref: '#',
-    // userId: Math.ceil(Math.random() * 6),
+    userId: Math.ceil(Math.random() * 6),
     createdDate: faker.date.recent(),
     createdDatetime: faker.date.recent(),
     deliveredDate: faker.date.recent(),

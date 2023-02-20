@@ -1,28 +1,23 @@
-// import { fromSuccess } from 'domain-functions';
+import { fromSuccess } from 'domain-functions'
 import { getPurchases } from '../purchases.server'
 
 describe('getPurchases', () => {
   it('should return 10 purchases by default', async () => {
-    // fromSuccess
-    const result = await getPurchases({})
-    if (!result.success) throw new Error('getPurchases failed')
-
-    expect(result.data.purchases).toHaveLength(10)
+    const { purchases } = await fromSuccess(getPurchases)({})
+    expect(purchases).toHaveLength(10)
   })
 
   it('should have between 1 and 5 products', async () => {
-    const result = await getPurchases({})
-    if (!result.success) throw new Error('getPurchases failed')
+    const { purchases } = await fromSuccess(getPurchases)({})
 
-    expect(result.data.purchases[0].products.length).toBeGreaterThanOrEqual(1)
-    expect(result.data.purchases[0].products.length).toBeLessThanOrEqual(5)
+    expect(purchases[0].products.length).toBeGreaterThanOrEqual(1)
+    expect(purchases[0].products.length).toBeLessThanOrEqual(5)
   })
 
   it('should accept a quantity of purchases to show', async () => {
-    const result = await getPurchases({ quantity: 5 })
-    if (!result.success) throw new Error('getPurchases failed')
+    const { purchases } = await fromSuccess(getPurchases)({ quantity: 5 })
 
-    expect(result.data.purchases).toHaveLength(5)
+    expect(purchases).toHaveLength(5)
   })
 
   it('accepts "number-like" quantity', async () => {
